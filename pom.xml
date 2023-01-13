@@ -4,6 +4,33 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.xdev-software</groupId>
+    <artifactId>xapi-db-sybase</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <name>SqlEngine Database Adapter Sybase</name>
+	<description>XAPI SqlEngine Database Adapter for Sybase</description>
+	<url>https://github.com/xdev-software/xapi-db-sybase</url>
+
+    <scm>
+		<url>https://github.com/xdev-software/xapi-db-sybase</url>
+		<connection>https://github.com/xdev-software/xapi-db-sybase.git</connection>
+	</scm>
+
+    <organization>
+        <name>XDEV Software</name>
+        <url>https://xdev-software.com</url>
+    </organization>
+
+    <inceptionYear>2003</inceptionYear>
+    <developers>
+		<developer>
+			<name>XDEV Software</name>
+			<organization>XDEV Software</organization>
+			<url>https://www.xdev-software.com</url>
+		</developer>
+	</developers>
+
     <licenses>
         <license>
             <name>GNU Lesser General Public License version 3</name>
@@ -11,32 +38,13 @@
         </license>
     </licenses>
 
-
-    <groupId>groupId</groupId>
-    <artifactId>Sybase</artifactId>
-    <version>1.0-SNAPSHOT</version>
-
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <xdev.xapi.version>6.0.1</xdev.xapi.version>
-        <junit.version>4.13.2</junit.version>
         <license.licenseName>lgpl_v3</license.licenseName>
     </properties>
-
-    <organization>
-        <name>XDEV Software</name>
-        <url>https://xdev-software.com</url>
-    </organization>
-    <inceptionYear>2003</inceptionYear>
-    <repositories>
-        <repository>
-            <id>ICM-Repository</id>
-            <url>http://maven.icm.edu.pl/artifactory/repo/</url>
-        </repository>
-    </repositories>
-
 
     <dependencies>
         <dependency>
@@ -44,14 +52,43 @@
             <artifactId>xapi</artifactId>
             <version>${xdev.xapi.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
+
+    <repositories>
+        <!-- The order of definitions matters. Explicitly defining central here 
+			to make sure it has the highest priority. -->
+		<repository>
+			<id>central</id>
+			<url>https://repo.maven.apache.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+    </repositories>
+
+    
+	<pluginRepositories>
+		<!-- The order of definitions matters. Explicitly defining central here 
+			to make sure it has the highest priority. -->
+		<pluginRepository>
+			<id>central</id>
+			<url>https://repo.maven.apache.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
 
     <build>
         <plugins>
