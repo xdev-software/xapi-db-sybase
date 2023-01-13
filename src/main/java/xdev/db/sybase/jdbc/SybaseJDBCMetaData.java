@@ -217,7 +217,7 @@ public class SybaseJDBCMetaData extends JDBCMetaData
 		indices[i] = new Index(indexInfo.name, indexInfo.type,indexColumns);
 	}
 	
-	private static void putColumnNamesInIndexMap(ResultSet rs, Map<IndexInfo, Set<String>> indexMap, Set<String> primaryKeyColumns)
+	private void putColumnNamesInIndexMap(ResultSet rs, Map<IndexInfo, Set<String>> indexMap, Set<String> primaryKeyColumns)
 		throws SQLException
 	{
 		String indexName = rs.getString("INDEX_NAME");
@@ -271,9 +271,6 @@ public class SybaseJDBCMetaData extends JDBCMetaData
 				column.isAutoIncrement());
 	}
 	
-	// XXX not able to get return type of procedures and remarks for all. maybe
-	// getting answer of my question in the forum:
-	// http://www.dbforums.com/sybase/1693489-how-get-stored-procedure-function-infos.html
 	@Override
 	public StoredProcedure[] getStoredProcedures(ProgressMonitor monitor) throws DBException
 	{
@@ -330,18 +327,7 @@ public class SybaseJDBCMetaData extends JDBCMetaData
 							}
 							else if(columnType==2)
 							{
-								paramType = Par
-							}
-							switch(columnType)
-							{
-								case 1:
-									paramType = ParamType.IN;
-									break;
-								case 2:
-									paramType = ParamType.OUT;
-									break;
-								default:
-									break;
+								paramType = ParamType.OUT;
 							}
 						}
 						
@@ -379,7 +365,6 @@ public class SybaseJDBCMetaData extends JDBCMetaData
 							);
 							spIndex++;
 							oldName = name;
-							
 						}
 					}
 				}
@@ -398,27 +383,29 @@ public class SybaseJDBCMetaData extends JDBCMetaData
 	
 	private DataType sybToJdbc(int dataType, int userType)
 	{
-		// Check following side to add or change parsing DataTypes.
-		// http://infocenter.sybase.com/help/index.jsp?topic=/com.sybase.help.ase_15.0.tables/html/tables/tables46.htm
 		switch(dataType)
 		{
 			case 48:
 				return DataType.TINYINT;
+				
 			case 52:
 				return DataType.SMALLINT;
+				
 			case 56:
 				return DataType.INTEGER;
+				
 			case 191:
 				return DataType.BIGINT;
 				
 			case 62:
 				return DataType.FLOAT;
+				
 			case 59:
 				return DataType.REAL;
-				// case Types.DOUBLE:
-				// return DataType.DOUBLE;
+				
 			case 63:
 				return DataType.NUMERIC;
+				
 			case 55:
 				return DataType.DECIMAL;
 				
@@ -426,46 +413,27 @@ public class SybaseJDBCMetaData extends JDBCMetaData
 				return DataType.BOOLEAN;
 				
 			case 47:
-				// case Types.NCHAR:
 				return DataType.CHAR;
-			case 39:
-				// case Types.NVARCHAR:
-				return DataType.VARCHAR;
-				// case Types.LONGVARCHAR:
-				// case Types.LONGNVARCHAR:
-				// return DataType.LONGVARCHAR;
+				
 			case 35:
-				// case Types.CLOB:
-				// case Types.NCLOB:
 				return DataType.CLOB;
 				
 			case 45:
 				return DataType.BINARY;
-			case 37:
-				switch(userType)
-				{
-					case 4:
-						return DataType.VARBINARY;
-					case 80:
-						return DataType.TIMESTAMP;
-					default:
-						return DataType.VARBINARY;
-						
-				}
-				// case Types.LONGVARBINARY:
-				// return DataType.LONGVARBINARY;
-				// case Types.BLOB:
-				// return DataType.BLOB;
 				
+			case 37:
+				if(userType == 80)
+				{
+					return DataType.TIMESTAMP;
+				}
+				return DataType.VARBINARY;
+			
 			case 49:
 				return DataType.DATE;
 				
 			case 51:
 				return DataType.TIME;
-				
-				// case Types.TIMESTAMP:
-				// return DataType.TIMESTAMP;
-				
+			
 			default:
 				return DataType.VARCHAR;
 		}

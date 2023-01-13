@@ -12,6 +12,17 @@ We once wrote this Database Adapter for Sybase 6.0. According to the following c
 The Maven Dependency (found on https://mvnrepository.com/artifact/com.esen.jdbc/sybase-jconn3/6.0 ), should not be used.
 In order to get this Adapter to run, you have to register on their website and manually download the JAR.
 
+Furtermore, this Adapter is not applicable to write to the database. Your are only able to read from it.
+
+The following actions, can't be performed:
+- createTable
+- addColumn
+- alterColumn
+- dropColumn
+- createIndex
+- dropIndex
+- appendEscapeName
+
 ## XDEV-IDE
 XDEV(-IDE) is a visual Java development environment for fast and easy application development (RAD - Rapid Application Development). XDEV differs from other Java IDEs such as Eclipse or NetBeans, focusing on programming through a far-reaching RAD concept. The IDE's main components are a Swing GUI builder, the XDEV Application Framework, and numerous drag-and-drop tools and wizards with which the functions of the framework can be integrated.
 
