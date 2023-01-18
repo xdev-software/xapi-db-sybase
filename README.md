@@ -6,11 +6,10 @@
 
 The XDEV Application Framework provides an abstraction over database dialects as part of its SqlEngine. This module is the Database Adapter for Sybase which includes the Sybase-specific implementation for database access.
 
-# Important Note
+### :information_source: Important Notes
 
-We once wrote this Database Adapter for Sybase 6.0. According to the following comment on StackOverflow (https://stackoverflow.com/a/26350230/12336976) this jar is now part of Sybase jConnect.
-The Maven Dependency (found on https://mvnrepository.com/artifact/com.esen.jdbc/sybase-jconn3/6.0 ), should not be used.
-In order to get this Adapter to run, you have to register on their website and manually download the JAR.
+We once wrote this Database Adapter for Sybase 6.0 which is now a part of Sybase jConnect.<br/>
+[The JDBC-Connector Jar must be downloaded from their website (requires registration)](https://stackoverflow.com/a/26350230/12336976).
 
 Furtermore, this Adapter is not applicable to write to the database. Your are only able to read from it.
 
@@ -48,10 +47,6 @@ We encourage you to read the [contribution instructions by GitHub](https://guide
 ## Dependencies and Licenses
 The XDEV Application Framework is released under [GNU Lesser General Public License version 3](https://www.gnu.org/licenses/lgpl-3.0.en.html) aka LGPL 3<br/>
 View the [summary of all dependencies online](https://xdev-software.github.io/xapi-db-sybase/dependencies/)
-
-## Support
-If you need support as soon as possible and you can not wait for any pull request, feel free to use our support 
-https://xdev.software/en/services/support
 
 ## Releasing [![Build](https://img.shields.io/github/workflow/status/xdev-software/xapi-db-sybase/Release?label=Release)](https://github.com/xdev-software/xapi-db-sybase/actions/workflows/release.yml)
 Consider doing a [test-deployment](https://github.com/xdev-software/xapi-db-sybase/actions/workflows/test-deploy.yml?query=branch%3Adevelop) before actually releasing.
