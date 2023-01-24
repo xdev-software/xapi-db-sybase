@@ -1,7 +1,7 @@
 [![Latest version](https://img.shields.io/maven-central/v/com.xdev-software/xapi-db-sybase)](https://mvnrepository.com/artifact/com.xdev-software/xapi-db-sybase)
 [![Build](https://img.shields.io/github/actions/workflow/status/xdev-software/xapi-db-sybase/checkBuild.yml?branch=develop)](https://github.com/xdev-software/xapi-db-sybase/actions/workflows/checkBuild.yml?query=branch%3Adevelop)
 [![javadoc](https://javadoc.io/badge2/com.xdev-software/xapi-db-sybase/javadoc.svg)](https://javadoc.io/doc/com.xdev-software/xapi-db-sybase) 
-# xapi-db-sybase
+# SqlEngine Database Adapter Sybase
 
 The XDEV Application Framework provides an abstraction over database dialects as part of its SqlEngine. This module is the Database Adapter for Sybase which includes the Sybase-specific implementation for database access.
 
